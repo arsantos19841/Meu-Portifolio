@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+<title>Laboratório React</title>
+</head>
+<body>
+<h1>Laboratório de componentes</h1>
+<div id="raiz"></div>
+<script crossorigin
+src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+<script crossorigin
+src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js">
+</script>
+<script>
+function Contador(props) {
+const [total, setTotal] = React.useState(0);
+React.useEffect(function () {
+document.title = "Cliques: " + total;
+}, [total]);
+return React.createElement(
+"button",
+{ onClick: function () { setTotal(n => n + 1); } },
+props.rotulo + ": " + total
+);
+}
+const raiz = ReactDOM.createRoot(document.getElementById("raiz"));
+raiz.render(
+React.createElement(Contador, { rotulo: "Meus cliques" })
+);
+</script>
+</body>
+</html>

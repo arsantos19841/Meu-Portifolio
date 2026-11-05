@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+<title>Meu portfólio</title>
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+<style>
+body { font-family: Arial, sans-serif; color: #173c36; }
+header, footer { background: #173c36; color: white; }
+header, footer, section { padding: 24px; }
+nav { display: flex; flex-wrap: wrap; gap: 20px; }
+nav a, footer a { color: white; }
+section { scroll-margin-top: 20px; }
+.card { height: 100%; border: 1px solid #788b87; }
+label { display: block; margin-top: 14px; }
+input, textarea {
+display: block;
+width: 100%;
+max-width: 600px;
+padding: 10px;
+border: 1px solid #54645f;
+}
+button { margin-top: 14px; }
+:focus-visible { outline: 3px solid #b34c00; outline-offset: 4px; }
+.pular { position: absolute; left: -10000px; }
+.pular:focus {
+position: static;
+display: block;
+padding: 12px;
+color: black;
+background: white;
+}
+#mensagem { min-height: 2em; margin-top: 12px; }
+@media (max-width: 576px) {
+header, footer, section { padding: 16px; }
+}
+</style>
+</head>
+<body id="topo">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header>
+<div class="container">
+<p class="h3">Meu nome</p>
+<nav aria-label="Principal">
+<a href="#sobre">Sobre</a>
+<a href="#projetos">Projetos</a>
+<a href="#contato">Contato</a>
+</nav>
+</div>
+</header>
+<main id="conteudo" class="container" tabindex="-1">
+<section id="sobre">
+<h1>Olá! Sou estudante de desenvolvimento web</h1>
+<p>Meu nome é Angélica, estou aprendendo a criar sites.</p>
+<p>Este portfólio apresenta meus primeiros projetos.</p>
+</section>
+<section id="projetos">
+<h2>Meus projetos</h2>
+<div class="row g-3">
+<article class="col-md-6">
+<div class="card p-3">
+<h3 class="h5">Lista de tarefas</h3>
+<p>Aplicação para adicionar e concluir atividades.</p>
+<p>Conceitos: DOM eventos e funções.</p>
+</div>
+</article>
+<article class="col-md-6">
+<div class="card p-3">
+<h3 class="h5">Portfólio pessoal</h3>
+<p>Página responsiva com formulário de demonstração.</p>
+<p>Conceitos: HTML semântico e Bootstrap.</p>
+</div>
+</article>
+</div>
+</section>
+<section id="contato">
+<h2>Contato</h2>
+<p>Este formulário é uma demonstração e não envia dados.</p>
+<form id="form-contato">
+<label for="nome">Nome</label>
+<input id="nome" name="nome" required maxlength="60">
+<label for="email">E-mail</label>
+<input id="email" name="email" type="email" required>
+<label for="texto">Mensagem</label>
+<textarea id="texto" name="texto" rows="4"
+required maxlength="500"></textarea>
+<button class="btn btn-primary" type="submit">
+Validar demonstração
+</button>
+<p id="mensagem" role="status"></p>
+</form>
+</section>
+</main>
+<footer>
+<div class="container">
+<p>Portfólio de Angélica</p>
+<a href="#topo">Voltar ao topo</a>
+</div>
+</footer>
+<script>
+const form = document.getElementById("form-contato");
+const nome = document.getElementById("nome");
+const texto = document.getElementById("texto");
+const mensagem = document.getElementById("mensagem");
+form.addEventListener("submit", function (evento) {
+evento.preventDefault();
+if (nome.value.trim() === "") {
+mensagem.textContent = "Preencha o nome sem usar apenas espaços.";
+nome.focus();
+return;
+}
+if (texto.value.trim() === "") {
+mensagem.textContent = "Escreva uma mensagem válida.";
+texto.focus();
+return;
+}
+mensagem.textContent = "Olá " + nome.value.trim() +
+". Demonstração validada. Nenhum dado foi enviado.";
+});
+</script>
+</body>
+</html>
